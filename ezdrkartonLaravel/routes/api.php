@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MedicalRecordController;
 use App\Http\Controllers\PrescriptionController;
 use App\Http\Resources\AppointmentResource;
@@ -17,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::post('/register',[AuthController::class,'register']);
+Route::post('/login',[AuthController::class,'login']);
+Route::middleware('auth:sanctum')->post('/logout',[AuthController::class,'logout']);
+
 
 Route::get('/records',[MedicalRecordController::class,'index']);
 Route::get('/records/{id}',[MedicalRecordController::class,'show']);

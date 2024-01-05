@@ -12,13 +12,16 @@ class Appointment extends Model
     protected $fillable = [
         'patient_id', 'doctor_id', 'nurse_id', 'appointment_date', 'notes',  
     ];
-    public function doctor(){
-        return $this->belongsTo(User::class);
+    public function doctor()
+    {
+        return $this->belongsTo(User::class, 'doctor_id');
     }
-    public function patient(){
-        return $this->belongsTo(User::class);
+
+    public function patient()
+    {
+        return $this->belongsTo(User::class, 'patient_id');
     }
     public function nurse(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'nurse_id');
     }
 }

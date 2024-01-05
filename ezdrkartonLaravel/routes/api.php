@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\MedicalRecordController;
+use App\Http\Controllers\PrescriptionController;
 use App\Http\Resources\AppointmentResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +27,7 @@ Route::delete('/records/{id}',[MedicalRecordController::class,'destroy']);
 
 
 Route::resource('/appointments',AppointmentController::class);
-
+Route::resource('/prescriptions',PrescriptionController::class);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

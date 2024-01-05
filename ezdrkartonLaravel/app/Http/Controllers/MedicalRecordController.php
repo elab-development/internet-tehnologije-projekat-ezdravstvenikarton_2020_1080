@@ -35,7 +35,16 @@ class MedicalRecordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'patient_id' => 'required|exists:users,id',
+            'doctor_id' => 'required|exists:users,id',
+            'record_date' => 'required|date',
+            'diagnosis' => 'required|string',
+            'treatment' => 'required|string',
+        ]);
+        $medicalRecord = MedicalRecord::create($data);
+        return response()->json($medicalRecord, 201);
+
     }
 
     /**

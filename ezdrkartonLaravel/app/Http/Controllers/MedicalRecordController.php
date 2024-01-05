@@ -105,4 +105,41 @@ class MedicalRecordController extends Controller
         $medicalRecord->delete();
         return response()->json(['message'=>'OBRISANO', 'mr'=>new MedicalRecordResource($medicalRecord)], 200);
     }
+
+
+
+    public function pretraga(Request $request){
+        $query = MedicalRecord::query();
+        if ($request->has('record_date')) {
+            $query->whereDate('record_date', $request->input('record_date'));
+        }
+
+        if ($request->has('diagnosis')) {
+            $query->where('diagnosis', 'like', '%' . $request->input('diagnosis') . '%');
+        }
+        if ($request->has('patient_id')) {
+            $query->where('patient_id', $request->input('patient_id'));
+        }
+
+        if ($request->has('doctor_id')) {
+            $query->where('doctor_id', $request->input('doctor_id'));
+        }
+
+        $records = $query->get();
+
+        return MedicalRecordResource::collection($records);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }

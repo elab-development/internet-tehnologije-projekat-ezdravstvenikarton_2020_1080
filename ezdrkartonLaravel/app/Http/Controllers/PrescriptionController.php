@@ -57,4 +57,38 @@ class PrescriptionController extends Controller
 
         return response()->json(['message' => 'Recept je obrisan', 'prescription' => new PrescriptionResource($prescription)], 200);
     }
+
+
+
+
+
+
+
+
+    public function pretraga(Request $request)
+    {
+        $query = Prescription::query();      
+        if ($request->has('medication')) {
+           
+            $query->where('medication', 'like', '%' . $request->has('medication') . '%');
+        }
+    
+        if ($request->has('patient_id')) {
+            $query->where('patient_id', $request->input('patient_id'));
+        }
+
+        if ($request->has('doctor_id')) {
+            $query->where('doctor_id', $request->input('doctor_id'));
+        }
+        $prescriptions = $query->get();
+    
+        return PrescriptionResource::collection($prescriptions);
+    }
+    
+ 
+
+
+
+
+
 }

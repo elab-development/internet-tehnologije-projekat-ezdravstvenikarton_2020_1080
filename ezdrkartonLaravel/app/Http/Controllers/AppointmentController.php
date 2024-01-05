@@ -57,4 +57,36 @@ class AppointmentController extends Controller
 
         return response()->json(['message' => 'Termin je obrisan', 'appointment' => new AppointmentResource($appointment)], 200);
     }
+
+
+
+
+    public function pretraga(Request $request)
+    {
+        $query = Appointment::query();
+
+         
+        if ($request->has('appointment_date')) {
+            $query->whereDate('appointment_date', $request->input('appointment_date'));
+        }
+ 
+        if ($request->has('notes')) {
+            $query->where('notes', 'like', '%' . $request->input('notes') . '%');
+        }
+        if ($request->has('patient_id')) {
+            $query->where('patient_id', $request->input('patient_id'));
+        }
+
+        if ($request->has('doctor_id')) {
+            $query->where('doctor_id', $request->input('doctor_id'));
+        }
+
+        if ($request->has('nurse_id')) {
+            $query->where('nurse_id', $request->input('nurse_id'));
+        }
+        $records = $query->get();
+
+        return AppointmentResource::collection($records);
+    }
+
 }

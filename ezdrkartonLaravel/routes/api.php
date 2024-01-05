@@ -19,6 +19,9 @@ Route::get('/records',[MedicalRecordController::class,'index']);
 Route::get('/records/{id}',[MedicalRecordController::class,'show']);
 Route::post('/records',[MedicalRecordController::class,'store']);
 
+Route::put('/records/{id}',[MedicalRecordController::class,'update']);
+Route::delete('/records/{id}',[MedicalRecordController::class,'destroy']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

@@ -44,7 +44,7 @@ class MedicalRecordController extends Controller
             'treatment' => 'required|string',
         ]);
         $medicalRecord = MedicalRecord::create($data);
-        return response()->json($medicalRecord, 201);
+        return response()->json(new MedicalRecordResource($medicalRecord), 201);
 
     }
 
@@ -77,9 +77,19 @@ class MedicalRecordController extends Controller
      * @param  \App\Models\MedicalRecord  $medicalRecord
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MedicalRecord $medicalRecord)
+    public function update(Request $request, $id)
     {
-        //
+        $medicalRecord=MedicalRecord::findOrFail($id);
+
+        $data = $request->validate([
+            'patient_id' => 'required|exists:users,id',
+            'doctor_id' => 'required|exists:users,id',
+            'record_date' => 'required|date',
+            'diagnosis' => 'required|string',
+            'treatment' => 'required|string',
+        ]);
+        $medicalRecord->update($data);
+        return response()->json(new MedicalRecordResource($medicalRecord), 200);
     }
 
     /**
@@ -88,8 +98,11 @@ class MedicalRecordController extends Controller
      * @param  \App\Models\MedicalRecord  $medicalRecord
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MedicalRecord $medicalRecord)
+    public function destroy($id)
     {
-        //
+        $medicalRecord=MedicalRecord::findOrFail($id);
+
+        $medicalRecord->delete();
+        return response()->json(['message'=>'OBRISANO', 'mr'=>new MedicalRecordResource($medicalRecord)], 200);
     }
 }

@@ -36,17 +36,32 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     Route::post('/logout',[AuthController::class,'logout']);
 
-    Route::get('/records/pretraga',[MedicalRecordController::class,'pretraga']);
-    Route::get('/records',[MedicalRecordController::class,'index']);
-    Route::get('/records/{id}',[MedicalRecordController::class,'show']);
-    Route::post('/records',[MedicalRecordController::class,'store']);
+
+    Route::middleware('role:doctor')->group(function () {
+        Route::get('/records',[MedicalRecordController::class,'index']);
+        Route::get('/records/{id}',[MedicalRecordController::class,'show']);
+        Route::post('/records',[MedicalRecordController::class,'store']);
+        
+        Route::put('/records/{id}',[MedicalRecordController::class,'update']);
+        Route::delete('/records/{id}',[MedicalRecordController::class,'destroy']);
+
+
+        Route::resource('/prescriptions',PrescriptionController::class);
+    });
+
+
+    Route::middleware('role:patient')->group(function () {
+        Route::get('/records/pretraga',[MedicalRecordController::class,'pretraga']);
+   
+        Route::get('/appointments/pretraga',[AppointmentController::class,'pretraga']);
+        Route::resource('/appointments',AppointmentController::class);
+        Route::get('/prescriptions/pretraga',[PrescriptionController::class,'pretraga']);
+
+
+    });
     
-    Route::put('/records/{id}',[MedicalRecordController::class,'update']);
-    Route::delete('/records/{id}',[MedicalRecordController::class,'destroy']);
-    Route::get('/appointments/pretraga',[AppointmentController::class,'pretraga']);
-    Route::resource('/appointments',AppointmentController::class);
-    Route::get('/prescriptions/pretraga',[PrescriptionController::class,'pretraga']);
-    Route::resource('/prescriptions',PrescriptionController::class);
+   
+   
 });
  
 

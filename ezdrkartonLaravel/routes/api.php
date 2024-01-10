@@ -27,8 +27,7 @@ Route::post('/login',[AuthController::class,'login']);
 Route::get('/doctors',[UserController::class,'getAllDoctors']);
 Route::get('/nurses',[UserController::class,'getAllNurses']);
 
-
-
+ 
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/user', function (Request $request) {
@@ -51,7 +50,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     Route::middleware('role:patient')->group(function () {
-        Route::get('/records/pretraga',[MedicalRecordController::class,'pretraga']);
+         Route::get('/records/pretraga',[MedicalRecordController::class,'pretraga']);
    
         Route::get('/appointments/pretraga',[AppointmentController::class,'pretraga']);
         Route::resource('/appointments',AppointmentController::class);

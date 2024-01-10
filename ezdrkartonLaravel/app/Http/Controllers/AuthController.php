@@ -21,7 +21,7 @@ class AuthController extends Controller
             'other' => 'nullable|string',
         ]);
 
-        $data['role'] = 'pacijent';
+        $data['role'] = 'patient';
         $data['password'] =  Hash::make($request->password);
         $user = User::create($data);
     

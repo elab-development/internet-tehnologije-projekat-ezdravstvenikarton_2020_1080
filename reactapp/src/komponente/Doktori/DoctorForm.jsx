@@ -20,6 +20,7 @@ function DoctorForm() {
       e.preventDefault();
       addDoctor(newDoctor);
       setNewDoctor({ name: '', specialty: '', yearsOfExperience: 0, rating: 0 });
+      
     };
     return (
         <div className="doctor-form-container">

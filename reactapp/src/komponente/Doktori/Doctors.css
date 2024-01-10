@@ -1,0 +1,28 @@
+.doctors-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #F4F1BB;  
+    color: #5D576B;  
+    padding: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #E6EBE0;  
+  }
+  
+  th {
+    background-color: #9BC1BC;  
+    color: #ED6A5A;  
+  }
+  
+  tbody tr:hover {
+    background-color: #E6EBE0;  
+  }
+  

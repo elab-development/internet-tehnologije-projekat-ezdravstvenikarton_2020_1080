@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ImageGallery.css';
+import OneImage from './OneImage'; 
 
 const images = [
   'https://source.unsplash.com/random/?hospital',
@@ -23,11 +24,10 @@ function ImageGallery() {
   return (
     <div className="gallery">
       {images.map((src, index) => (
-        <img 
+        <OneImage 
           key={index} 
           src={src} 
           alt={`Gallery item ${index + 1}`} 
-          className="gallery-image" 
           onClick={() => handleClick(src)}
         />
       ))}

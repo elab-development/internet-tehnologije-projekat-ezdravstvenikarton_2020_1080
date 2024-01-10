@@ -1,15 +1,11 @@
 import React from 'react';
 import './Doctors.css';
+import useDoctors from '../customHooks/useDoctors';
 
-const doctors = [
-  { id: 1, name: 'Dr. Jane Smith', specialty: 'Cardiology', yearsOfExperience: 12, rating: 4.5 },
-  { id: 2, name: 'Dr. John Doe', specialty: 'Neurology', yearsOfExperience: 8, rating: 4.7 },
-  { id: 3, name: 'Dr. Emily Jones', specialty: 'Pediatrics', yearsOfExperience: 5, rating: 4.6 },
-  { id: 4, name: 'Dr. William Brown', specialty: 'Orthopedics', yearsOfExperience: 15, rating: 4.4 },
-  { id: 5, name: 'Dr. Anna Davis', specialty: 'Dermatology', yearsOfExperience: 9, rating: 4.8 }
-];
+ 
 
 function Doctors() {
+    const doctors = useDoctors();
   return (
     <div className="doctors-container">
       <table>

@@ -1,0 +1,44 @@
+.doctor-form-container {
+    background-color: #F4F1BB;  
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+  }
+  
+  .doctor-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .doctor-form label {
+    display: flex;
+    flex-direction: column;
+    color: #5D576B;  
+    font-weight: bold;
+  }
+  
+  .doctor-form input {
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #9BC1BC;  
+  }
+  
+  .submit-btn {
+    padding: 10px;
+    background-color: #9BC1BC; 
+    color: #ED6A5A; 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .submit-btn:hover {
+    background-color: #ED6A5A; 
+    color: #F4F1BB; 
+  }
+  

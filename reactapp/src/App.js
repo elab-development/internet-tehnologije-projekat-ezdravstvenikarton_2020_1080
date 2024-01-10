@@ -4,6 +4,7 @@ import './App.css';
 import Home from './komponente/pocetna/Home';
 import ImageGallery from './komponente/Galerija/ImageGallery';
 import Doctors from './komponente/Doktori/Doctors';
+import DoctorForm from './komponente/Doktori/DoctorForm';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/doctors/add" element={<DoctorForm />} />
           <Route path="/doctors" element={<Doctors />} />
           <Route path="/gallery" element={<ImageGallery />} />
         </Routes>

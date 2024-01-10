@@ -10,11 +10,17 @@ const initialDoctors = [
   const useDoctors = () => {
     const [doctors, setDoctors] = useState(initialDoctors);
   
+    const addDoctor = (newDoctor) => {
+      setDoctors([...doctors, { id: doctors.length + 1, ...newDoctor }]);
+    };
+  
     const deleteDoctor = (id) => {
       setDoctors(doctors.filter(doctor => doctor.id !== id));
     };
   
-    return { doctors, deleteDoctor };
+    return { doctors, addDoctor, deleteDoctor };
   };
   
   export default useDoctors;
+  
+ 

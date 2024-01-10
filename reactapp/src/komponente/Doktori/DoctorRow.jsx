@@ -1,6 +1,6 @@
 import React from 'react';
 
-function DoctorRow({ doctor }) {
+function DoctorRow({ doctor, deleteDoctor }) {
   return (
     <tr>
       <td>{doctor.id}</td>
@@ -8,6 +8,9 @@ function DoctorRow({ doctor }) {
       <td>{doctor.specialty}</td>
       <td>{doctor.yearsOfExperience}</td>
       <td>{doctor.rating}</td>
+      <td>
+        <button onClick={() => deleteDoctor(doctor.id)}>Delete</button>
+      </td>
     </tr>
   );
 }

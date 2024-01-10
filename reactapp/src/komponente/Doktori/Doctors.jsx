@@ -6,7 +6,7 @@ import DoctorRow from './DoctorRow';
  
 
 function Doctors() {
-    const doctors = useDoctors();
+    const { doctors, deleteDoctor } = useDoctors();
   return (
     <div className="doctors-container">
       <table>
@@ -17,11 +17,12 @@ function Doctors() {
             <th>Specialty</th>
             <th>Years of Experience</th>
             <th>Rating</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
             {doctors.map(doctor => (
-                <DoctorRow key={doctor.id} doctor={doctor} />
+               <DoctorRow key={doctor.id} doctor={doctor} deleteDoctor={deleteDoctor} />
           ))}
         </tbody>
       </table>

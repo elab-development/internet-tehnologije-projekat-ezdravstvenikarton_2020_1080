@@ -46,3 +46,35 @@ th {
 tbody tr:hover {
   background-color: #E6EBE0;  
 }
+
+.search-and-filter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid #E6EBE0;
+  border-radius: 4px;
+  width: 50%;
+}
+.sort-button {
+  background-color: #F4F1BB;
+  border: 1px solid #E6EBE0;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: #5D576B;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 4px;
+}
+
+.sort-button:hover {
+  background-color: #9BC1BC;
+  color: #FFFFFF;
+}

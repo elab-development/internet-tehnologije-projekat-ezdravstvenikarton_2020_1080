@@ -1,0 +1,27 @@
+ 
+.navbar {
+    background-color: #3498db;  
+    padding: 10px;
+  }
+  
+  .navbar-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .navbar-item {
+    margin: 0;
+  }
+  
+  .navbar-link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .navbar-link:hover {
+    text-decoration: underline;
+  }
+  

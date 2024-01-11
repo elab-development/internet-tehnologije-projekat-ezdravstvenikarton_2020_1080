@@ -5,8 +5,8 @@ import DoctorRow from './DoctorRow';
 
  
 
-function Doctors() {
-    const { doctors, deleteDoctor } = useDoctors();
+function Doctors({doctors,deleteDoctor}) {
+    
   return (
     <div className="doctors-container">
       <table>

@@ -3,8 +3,8 @@ import './DoctorForm.css';
 import useDoctors from '../customHooks/useDoctors';
 import FormInput from './FormInput';
 
-function DoctorForm() {
-    const { addDoctor } = useDoctors();
+function DoctorForm({addDoctor}) {
+   
     const [newDoctor, setNewDoctor] = useState({
       name: '',
       specialty: '',
@@ -44,7 +44,7 @@ function DoctorForm() {
             <FormInput 
               label="Years of Experience"
               type="number"
-              name="experience"
+              name="yearsOfExperience"
               value={newDoctor.yearsOfExperience}
               onChange={handleChange}
               required

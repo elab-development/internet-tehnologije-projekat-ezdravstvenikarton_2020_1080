@@ -12,6 +12,8 @@ const initialDoctors = [
   
     const addDoctor = (newDoctor) => {
       setDoctors([...doctors, { id: doctors.length + 1, ...newDoctor }]);
+      console.log(newDoctor)
+      console.log(doctors)
     };
   
     const deleteDoctor = (id) => {

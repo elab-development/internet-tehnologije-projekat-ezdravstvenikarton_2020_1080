@@ -6,8 +6,10 @@ import ImageGallery from './komponente/Galerija/ImageGallery';
 import Doctors from './komponente/Doktori/Doctors';
 import DoctorForm from './komponente/Doktori/DoctorForm';
 import Navbar from './komponente/navbar/Navbar';
+import useDoctors from './komponente/customHooks/useDoctors';
 
 function App() {
+  const { doctors,addDoctor, deleteDoctor } = useDoctors();
   return (
     <Router>
       <div className="App">
@@ -15,8 +17,8 @@ function App() {
         <Routes>
 
           <Route path="/" element={<Home />} />
-          <Route path="/doctors/add" element={<DoctorForm />} />
-          <Route path="/doctors" element={<Doctors />} />
+          <Route path="/doctors/add" element={<DoctorForm addDoctor={addDoctor} />} />
+          <Route path="/doctors" element={<Doctors  doctors={doctors}  deleteDoctor={deleteDoctor}/>} />
           <Route path="/gallery" element={<ImageGallery />} />
         </Routes>
       </div>

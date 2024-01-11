@@ -78,3 +78,27 @@ tbody tr:hover {
   background-color: #9BC1BC;
   color: #FFFFFF;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-item {
+  border: 1px solid #E6EBE0;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  background-color: #F4F1BB;
+  color: #5D576B;
+}
+
+.page-item:hover {
+  background-color: #9BC1BC;
+}
+
+.page-item.active {
+  background-color: #ED6A5A;
+  color: #FFFFFF;
+}

@@ -6,6 +6,8 @@ function Doctors({ doctors, deleteDoctor }) {
   const [filter, setFilter] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOrder, setSortOrder] = useState(null);  // null, 'asc' or 'desc'
+  const [currentPage, setCurrentPage] = useState(1);
+  const doctorsPerPage = 5;
 
   const specialties = ["All", "Cardiology", "Neurology", "Pediatrics", "Orthopedics", "Dermatology"];
 
@@ -19,11 +21,20 @@ function Doctors({ doctors, deleteDoctor }) {
       return sortOrder === 'asc' ? a.rating - b.rating : b.rating - a.rating;
     });
   }
+  // Get current doctors
+  const indexOfLastDoctor = currentPage * doctorsPerPage;
+  const indexOfFirstDoctor = indexOfLastDoctor - doctorsPerPage;
+  const currentDoctors = sortedAndFilteredDoctors.slice(indexOfFirstDoctor, indexOfLastDoctor);
 
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const handleSort = () => {
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
   };
-
+  // Calculate page count
+  const pageCount = Math.ceil(sortedAndFilteredDoctors.length / doctorsPerPage);
+  // Create an array with the number of pages
+  const pageNumbers = [...Array(pageCount).keys()].map(num => num + 1);
   return (
     <div className="doctors-container">
       <div className="search-sort-filter-container">
@@ -61,11 +72,18 @@ function Doctors({ doctors, deleteDoctor }) {
           </tr>
         </thead>
         <tbody>
-          {sortedAndFilteredDoctors.map(doctor => (
+          {currentDoctors.map(doctor => (
             <DoctorRow key={doctor.id} doctor={doctor} deleteDoctor={deleteDoctor} />
           ))}
         </tbody>
       </table>
+      <div className="pagination">
+        {pageNumbers.map(number => (
+          <button key={number} onClick={() => paginate(number)} className={`page-item ${currentPage === number ? 'active' : ''}`}>
+            {number}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

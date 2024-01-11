@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Doctors.css';
 import useDoctors from '../customHooks/useDoctors';
 import DoctorRow from './DoctorRow';
@@ -6,9 +6,24 @@ import DoctorRow from './DoctorRow';
  
 
 function Doctors({doctors,deleteDoctor}) {
-    
+  const [filter, setFilter] = useState('All');
+
+  const specialties = ["All", "Cardiology", "Neurology", "Pediatrics", "Orthopedics", "Dermatology"];
+
+  const filteredDoctors = filter === 'All' ? doctors : doctors.filter(doctor => doctor.specialty === filter);
   return (
     <div className="doctors-container">
+       <div className="filter-container">
+            {specialties.map(specialty => (
+              <button
+                key={specialty}
+                className={`filter-button ${filter === specialty ? 'active' : ''}`}
+                onClick={() => setFilter(specialty)}
+              >
+                {specialty}
+              </button>
+            ))}
+          </div>
       <table>
         <thead>
           <tr>
@@ -21,9 +36,9 @@ function Doctors({doctors,deleteDoctor}) {
           </tr>
         </thead>
         <tbody>
-            {doctors.map(doctor => (
-               <DoctorRow key={doctor.id} doctor={doctor} deleteDoctor={deleteDoctor} />
-          ))}
+            {filteredDoctors.map(doctor => (
+                <DoctorRow key={doctor.id} doctor={doctor} deleteDoctor={deleteDoctor} />
+            ))}
         </tbody>
       </table>
     </div>

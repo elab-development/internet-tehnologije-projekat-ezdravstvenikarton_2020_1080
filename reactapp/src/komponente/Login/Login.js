@@ -4,7 +4,7 @@ import axios from 'axios';
  
 
 const Login = ({ setUser }) => {
-  const [email, setEmail] = useState('cordelia.kulas@example.org');
+  const [email, setEmail] = useState('lorenza.simonis@example.org');
   const [password, setPassword] = useState('password123');
   const [error, setError] = useState('');
 

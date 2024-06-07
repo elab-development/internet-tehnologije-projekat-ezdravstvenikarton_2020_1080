@@ -1,0 +1,62 @@
+.karton-main {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .karton-content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
+  .karton-container {
+    padding: 20px;
+  }
+  
+  .user-details p {
+    margin: 5px 0;
+  }
+  
+  .appointments-table,
+  .medical-records-table,
+  .prescriptions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .appointments-table th,
+  .medical-records-table th,
+  .prescriptions-table th,
+  .appointments-table td,
+  .medical-records-table td,
+  .prescriptions-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .appointments-table th,
+  .medical-records-table th,
+  .prescriptions-table th {
+    background-color: #f4f4f4;
+    text-align: left;
+  }
+  

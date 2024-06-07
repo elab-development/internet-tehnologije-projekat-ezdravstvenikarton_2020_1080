@@ -27,7 +27,7 @@ Route::post('/login',[AuthController::class,'login']);
 Route::get('/doctors',[UserController::class,'getAllDoctors']);
 Route::get('/nurses',[UserController::class,'getAllNurses']);
 
- 
+
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/user', function (Request $request) {
@@ -35,7 +35,11 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     Route::post('/logout',[AuthController::class,'logout']);
 
+    Route::get('/records/pretraga',[MedicalRecordController::class,'pretraga']);
+    Route::get('/appointments/pretraga',[AppointmentController::class,'pretraga']);
+    Route::get('/prescriptions/pretraga',[PrescriptionController::class,'pretraga']);
 
+    
     Route::middleware('role:doctor')->group(function () {
         Route::get('/records',[MedicalRecordController::class,'index']);
         Route::get('/records/{id}',[MedicalRecordController::class,'show']);
@@ -50,13 +54,12 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     Route::middleware('role:patient')->group(function () {
-         Route::get('/records/pretraga',[MedicalRecordController::class,'pretraga']);
+
    
         Route::get('/appointments/pretraga',[AppointmentController::class,'pretraga']);
         Route::resource('/appointments',AppointmentController::class);
-        Route::get('/prescriptions/pretraga',[PrescriptionController::class,'pretraga']);
-
-
+       
+ 
     });
     
    

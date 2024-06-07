@@ -21,10 +21,7 @@
     text-decoration: none;
     color: #333;
   }
-  .dugmeSidebar{
-    border: none;
-    font-size: 10px;
-  }
+  
   .sub-menu {
     padding-left: 20px;
   }
@@ -69,4 +66,17 @@
   .prescriptions-table th {
     background-color: #f4f4f4;
     text-align: left;
+  }
+  
+  .delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .delete-btn:hover {
+    background-color: #cc0000;
   }

@@ -60,6 +60,24 @@ const Karton = () => {
     }
   }, [user]);
 
+  const handleDeleteAppointment = async (appointmentId) => {
+    try {
+      const token = sessionStorage.getItem('token');
+      await axios.delete(`http://127.0.0.1:8000/api/appointments/${appointmentId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setAppointments(appointments.filter(appointment => appointment.id !== appointmentId));
+    } catch (error) {
+      console.error('Error deleting appointment:', error);
+    }
+  };
+
+  const isFutureAppointment = (appointmentDate) => {
+    return new Date(appointmentDate) > new Date();
+  };
+
   if (!user) {
     return <p>Loading user data...</p>;
   }
@@ -102,6 +120,7 @@ const Karton = () => {
                 <th>Notes</th>
                 <th>Doctor</th>
                 <th>Nurse</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -112,6 +131,11 @@ const Karton = () => {
                   <td>{appointment.notes}</td>
                   <td>{`Dr. ${appointment.doctor.name}`}</td>
                   <td>{appointment.nurse.name}</td>
+                  <td>
+                    {isFutureAppointment(appointment.appointment_date) && (
+                      <button className='delete-btn' onClick={() => handleDeleteAppointment(appointment.id)}>Delete</button>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>

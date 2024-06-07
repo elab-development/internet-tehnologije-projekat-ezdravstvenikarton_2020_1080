@@ -19,15 +19,14 @@ class AuthController extends Controller
             'jmbg' => 'required|string',
             'date_of_birth' => 'required|date',
             'other' => 'nullable|string',
+            'role' => 'required|string|in:patient,doctor,nurse',  
         ]);
-
-        $data['role'] = 'patient';
-        $data['password'] =  Hash::make($request->password);
+    
+        $data['password'] = Hash::make($request->password);
         $user = User::create($data);
     
         return response()->json(['message' => 'Uspešno ste se registrovali'], 201);
     }
-
 
 
     public function login(Request $request)

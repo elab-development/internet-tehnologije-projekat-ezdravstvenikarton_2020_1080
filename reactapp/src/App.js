@@ -8,6 +8,7 @@ import DoctorForm from './komponente/Doktori/DoctorForm';
 import Navbar from './komponente/navbar/Navbar';
 import useDoctors from './komponente/customHooks/useDoctors';
 import Login from './komponente/Login/Login';
+import Register from './komponente/Login/Register';
 
 function App() {
   const [user,setUser] = useState(null);
@@ -27,8 +28,8 @@ function App() {
 
 
           {/*seminarski */}
-          <Route path="/login" element={<Login />} />
-
+          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route path="/register" element={<Register />} />
 
 
 

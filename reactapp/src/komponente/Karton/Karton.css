@@ -21,6 +21,17 @@
     text-decoration: none;
     color: #333;
   }
+  .dugmeSidebar{
+    border: none;
+    font-size: 10px;
+  }
+  .sub-menu {
+    padding-left: 20px;
+  }
+  
+  .sub-menu li {
+    margin-top: 5px;
+  }
   
   .karton-content {
     flex-grow: 1;
@@ -59,4 +70,3 @@
     background-color: #f4f4f4;
     text-align: left;
   }
-  

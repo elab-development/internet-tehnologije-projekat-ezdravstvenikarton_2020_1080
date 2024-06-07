@@ -1,21 +1,28 @@
- 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
- 
+import './Login.css';
 
 const Login = ({ setUser }) => {
   const [email, setEmail] = useState('lorenza.simonis@example.org');
   const [password, setPassword] = useState('password123');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/login', { email, password });
- 
+
       sessionStorage.setItem('token', response.data.token);
       sessionStorage.setItem('user', JSON.stringify(response.data.user));
       setUser(response.data.user);
+
+      if (response.data.user.role === 'patient') {
+        navigate('/karton');
+      } else if (response.data.user.role === 'admin') {
+        navigate('/doctors');
+      }
     } catch (error) {
       setError('Invalid credentials. Please try again.');
     }

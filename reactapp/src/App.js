@@ -11,6 +11,7 @@ import Login from './komponente/Login/Login';
 import Register from './komponente/Login/Register';
 import axios from 'axios';
 import Karton from './komponente/Karton/Karton';
+import KreirajAppointment from './komponente/Karton/KreirajAppointment';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -36,8 +37,8 @@ function App() {
 
 
 
-
-          <Route path="/karton" element={<Karton />} />
+          <Route path="/karton" element={user ? <Karton /> : <Home />} />
+          <Route path="/karton/kreirajAppointment" element={user ? <KreirajAppointment /> : <Home />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
         </Routes>

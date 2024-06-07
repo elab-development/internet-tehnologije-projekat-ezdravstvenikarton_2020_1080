@@ -47,6 +47,13 @@ function Navbar({ user, setUser }) {
                 </li>
               </>
             )}
+            {user.role === 'patient' && (
+              <li className="navbar-item">
+                <Link to="/karton" className="navbar-link">
+                  Karton
+                </Link>
+              </li>
+            )}
             <li className="navbar-item">
               <button onClick={handleLogout} className="navbar-link">
                 Logout

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './Karton.css';  
+import './Karton.css';
 
 const Karton = () => {
   const [user, setUser] = useState(null);
   const [appointments, setAppointments] = useState([]);
   const [medicalRecords, setMedicalRecords] = useState([]);
   const [prescriptions, setPrescriptions] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = sessionStorage.getItem('user');
@@ -67,7 +69,14 @@ const Karton = () => {
       <div className="sidebar">
         <ul>
           <li><a href="#user-details">User Details</a></li>
-          <li><a href="#appointments">Appointments</a></li>
+          <li>
+            <a href="#appointments">Appointments</a>
+            <ul className="sub-menu">
+              <li>
+                <button className='dugmeSidebar' onClick={() => navigate('/karton/kreirajAppointment')}>Create Appointment</button>
+              </li>
+            </ul>
+          </li>
           <li><a href="#medical-records">Medical Records</a></li>
           <li><a href="#prescriptions">Prescriptions</a></li>
         </ul>

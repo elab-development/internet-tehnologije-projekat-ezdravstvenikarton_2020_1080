@@ -12,9 +12,10 @@ const Login = ({ setUser }) => {
     event.preventDefault();
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/login', { email, password });
-      const { access_token, user } = response.data;
-      sessionStorage.setItem('token', access_token);
-      setUser(user);
+ 
+      sessionStorage.setItem('token', response.data.token);
+      sessionStorage.setItem('user', JSON.stringify(response.data.user));
+      setUser(response.data.user);
     } catch (error) {
       setError('Invalid credentials. Please try again.');
     }

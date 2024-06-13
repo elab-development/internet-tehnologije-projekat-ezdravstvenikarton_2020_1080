@@ -23,6 +23,9 @@ const Login = ({ setUser }) => {
       } else if (response.data.user.role === 'admin') {
         navigate('/doctors');
       }
+      else if (response.data.user.role === 'doctor') {
+        navigate('/doctorPanel');
+      }
     } catch (error) {
       setError('Invalid credentials. Please try again.');
     }

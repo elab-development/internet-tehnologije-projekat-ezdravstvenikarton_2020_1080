@@ -12,6 +12,7 @@ import Register from './komponente/Login/Register';
 import axios from 'axios';
 import Karton from './komponente/Karton/Karton';
 import KreirajAppointment from './komponente/Karton/KreirajAppointment';
+import DoctorPanel from './komponente/Doktori/DoktorPanel/DoctorPanel';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -36,6 +37,7 @@ function App() {
 
 
 
+          <Route path="/doctorPanel" element={<DoctorPanel />} />
 
           <Route path="/karton" element={user ? <Karton /> : <Home />} />
           <Route path="/karton/kreirajAppointment" element={user ? <KreirajAppointment /> : <Home />} />

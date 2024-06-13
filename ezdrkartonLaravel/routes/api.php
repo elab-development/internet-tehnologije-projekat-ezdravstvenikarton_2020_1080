@@ -56,7 +56,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::middleware('role:patient')->group(function () {
 
    
-        Route::get('/appointments/pretraga',[AppointmentController::class,'pretraga']);
+         
         Route::resource('/appointments',AppointmentController::class);
        
  

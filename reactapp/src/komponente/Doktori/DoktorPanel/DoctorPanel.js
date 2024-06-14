@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './DoctorPanel.css';
+import './DoctorPanel.css'; 
+import usePatients from '../../customHooks/usePatients';
 
 const DoctorPanel = () => {
     const [appointments, setAppointments] = useState({
@@ -8,6 +9,15 @@ const DoctorPanel = () => {
         tomorrow: [],
         dayAfterTomorrow: []
     });
+    const [newPrescription, setNewPrescription] = useState({
+        patient_id: '',
+        doctor_id: '',
+        medication: 'Test Medication',
+        dosage: 'Test Dosage',
+        instructions: 'Test Instructions',
+        issue_date: new Date().toISOString().split('T')[0]
+    });
+    const [patients] = usePatients();
 
     useEffect(() => {
         const user = JSON.parse(sessionStorage.getItem('user'));
@@ -65,6 +75,44 @@ const DoctorPanel = () => {
         }
     }, []);
 
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setNewPrescription(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const user = JSON.parse(sessionStorage.getItem('user'));
+        const token = sessionStorage.getItem('token');
+        const doctorId = user?.id;
+
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/api/prescriptions', 
+                { ...newPrescription, doctor_id: doctorId }, 
+                {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                }
+            );
+            console.log('Prescription created successfully:', response.data);
+            setNewPrescription({
+                patient_id: '',
+                doctor_id: '',
+                medication: 'Test Medication',
+                dosage: 'Test Dosage',
+                instructions: 'Test Instructions',
+                issue_date: new Date().toISOString().split('T')[0]
+            });
+        } catch (error) {
+            console.error('Error creating prescription:', error);
+        }
+    };
+
     return (
         <div className="doctor-panel">
             <h1>Doctor's Schedule</h1>
@@ -105,6 +153,64 @@ const DoctorPanel = () => {
                         </ul>
                     )}
                 </div>
+            </div>
+            <div className="new-prescription">
+                <h2>New Prescription</h2>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label>Patient:</label>
+                        <select 
+                            name="patient_id"
+                            value={newPrescription.patient_id}
+                            onChange={handleInputChange}
+                            required
+                        >
+                            <option value="">Select a patient</option>
+                            {patients.map(patient => (
+                                <option key={patient.id} value={patient.id}>{patient.name}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
+                        <label>Medication:</label>
+                        <input
+                            type="text"
+                            name="medication"
+                            value={newPrescription.medication}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Dosage:</label>
+                        <input
+                            type="text"
+                            name="dosage"
+                            value={newPrescription.dosage}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Instructions:</label>
+                        <textarea
+                            name="instructions"
+                            value={newPrescription.instructions}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                    <div>
+                        <label>Issue Date:</label>
+                        <input
+                            type="date"
+                            name="issue_date"
+                            value={newPrescription.issue_date}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                    <button type="submit">Create Prescription</button>
+                </form>
             </div>
         </div>
     );

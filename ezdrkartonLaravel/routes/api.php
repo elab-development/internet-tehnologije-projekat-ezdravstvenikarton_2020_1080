@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
 
+Route::get('/patients',[UserController::class,'getAllPatients']);
 
 Route::get('/doctors',[UserController::class,'getAllDoctors']);
 Route::get('/nurses',[UserController::class,'getAllNurses']);

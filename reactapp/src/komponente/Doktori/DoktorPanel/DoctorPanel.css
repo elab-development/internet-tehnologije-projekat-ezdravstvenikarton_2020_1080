@@ -41,3 +41,52 @@
     padding: 10px;
     border-radius: 5px;
 }
+.new-prescription {
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.new-prescription h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.new-prescription form {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-prescription form div {
+    margin-bottom: 10px;
+}
+
+.new-prescription form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.new-prescription form input,
+.new-prescription form select,
+.new-prescription form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.new-prescription form button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #03a4ed;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.new-prescription form button:hover {
+    background-color: #0288d1;
+}

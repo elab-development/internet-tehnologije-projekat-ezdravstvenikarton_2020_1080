@@ -8,7 +8,12 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     
-
+    
+    public function getAllPatients()
+    {
+        $doctors = User::where('role', 'patient')->get();
+        return response()->json($doctors);
+    }
     public function getAllDoctors()
     {
         $doctors = User::where('role', 'doctor')->get();

@@ -31,6 +31,11 @@ function Navbar({ user, setUser }) {
             Početna
           </Link>
         </li>
+        <li className="navbar-item">
+          <Link to="/drugList" className="navbar-link">
+            DrugList
+          </Link>
+        </li>
         {user ? (
           <>
             {user.role === 'admin' && (

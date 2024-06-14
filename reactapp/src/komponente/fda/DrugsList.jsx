@@ -5,6 +5,7 @@ import './DrugsList.css';
 const DrugsList = () => {
     const [drugs, setDrugs] = useState([]);
     const [expandedDrugIndex, setExpandedDrugIndex] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         const fetchDrugs = async () => {
@@ -36,13 +37,28 @@ const DrugsList = () => {
         setExpandedDrugIndex(index === expandedDrugIndex ? null : index);
     };
 
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    const filteredDrugs = drugs.filter(drug =>
+        drug.openfda.brand_name && drug.openfda.brand_name[0].toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className="drugs-list">
             <h1>Drugs List</h1>
-            {drugs.length === 0 ? (
+            <input
+                type="text"
+                placeholder="Search by brand name"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className="search-input"
+            />
+            {filteredDrugs.length === 0 ? (
                 <p>No drugs found</p>
             ) : (
-                drugs.map((drug, index) => (
+                filteredDrugs.map((drug, index) => (
                     <div key={index} className="drug-card">
                         <h2>{drug.openfda.brand_name ? drug.openfda.brand_name[0] : 'No Brand Name'}</h2>
                         {expandedDrugIndex === index ? (

@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(50)->create();
-        Appointment::factory(30)->create();
+        Appointment::factory(100)->create();
         MedicalRecord::factory(20)->create();
         Prescription::factory(20)->create();
 

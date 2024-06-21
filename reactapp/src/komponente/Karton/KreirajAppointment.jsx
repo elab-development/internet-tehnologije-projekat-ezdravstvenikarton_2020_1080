@@ -11,7 +11,6 @@ const KreirajAppointment = () => {
   const [notes, setNotes] = useState('Initial consultation.'); 
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
-
   const user = JSON.parse(sessionStorage.getItem('user'));
 
   useEffect(() => {

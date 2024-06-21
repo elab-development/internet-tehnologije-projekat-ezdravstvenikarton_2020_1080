@@ -25,7 +25,7 @@ class AppointmentFactory extends Factory
             'patient_id' => $this->faker->randomElement($patientUsers),
             'doctor_id' => $this->faker->randomElement($doctorUsers),
             'nurse_id' => $this->faker->randomElement($nurseUsers),
-            'appointment_date' => $this->faker->dateTimeBetween('now', '+7 days'),
+            'appointment_date' => $this->faker->dateTimeBetween('now', '+3 days'),
             'notes' => $this->faker->text,
         ];
     }

@@ -43,13 +43,11 @@ function App() {
 
 
           <Route path="/drugList" element={<DrugsList />} />
-          <Route path="/doctorPanel" element={<DoctorPanel />} />
-          <Route path="/karton" element={user ? <Karton /> : <Home />} />
-          <Route path="/karton/kreirajAppointment" element={user ? <KreirajAppointment /> : <Home />} />
-          <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
-
-
+          <Route path="/login" element={<Login setUser={setUser} />} />
+         <Route path="/karton" element={user ? <Karton /> : <Home />} />
+   <Route path="/karton/kreirajAppointment" element={user ? <KreirajAppointment /> : <Home />} />
+          <Route path="/doctorPanel" element={<DoctorPanel />} /> 
           <Route path="/statistics" element={<Statistics />} />
 
         </Routes>

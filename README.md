@@ -1,1 +1,9 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/1IMeAlJr)
+Ova aplikacija pruža sveobuhvatnu platformu za elektronske zdravstvene kartone, omogućavajući korisnicima različite funkcionalnosti u zavisnosti od njihove uloge (pacijent, doktor, medicinska sestra, administrator). 
+
+cd ezdrlaravel
+
+php artisan serve
+
+cd reactapp
+
+npmstart

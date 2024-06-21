@@ -23,7 +23,7 @@ const Login = ({ setUser }) => {
       } else if (response.data.user.role === 'admin') {
         navigate('/doctors');
       }
-      else if (response.data.user.role === 'doctor') {
+      else if (response.data.user.role === 'doctor' ||response.data.user.role === 'nurse' ) {
         navigate('/doctorPanel');
       }
     } catch (error) {

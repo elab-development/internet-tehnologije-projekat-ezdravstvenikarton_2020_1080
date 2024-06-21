@@ -86,4 +86,4 @@ const DrugsList = () => {
     );
 };
 
-export default DrugsList;
+export default DrugsList; 

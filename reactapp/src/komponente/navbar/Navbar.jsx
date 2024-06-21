@@ -50,6 +50,11 @@ function Navbar({ user, setUser }) {
                     Dodaj Doktora
                   </Link>
                 </li>
+                <li className="navbar-item">
+                  <Link to="/statistics" className="navbar-link">
+                    Statistike
+                  </Link>
+                </li>
               </>
             )}
             {user.role === 'patient' && (

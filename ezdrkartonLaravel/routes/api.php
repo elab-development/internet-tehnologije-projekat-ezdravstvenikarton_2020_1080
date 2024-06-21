@@ -8,7 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Resources\AppointmentResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\StatistikaController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -40,6 +40,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/appointments/pretraga',[AppointmentController::class,'pretraga']);
     Route::get('/prescriptions/pretraga',[PrescriptionController::class,'pretraga']);
 
+
+    Route::get('statistics/all', [StatistikaController::class, 'getAllStatistics']);
+    
     
     Route::middleware('role:doctor')->group(function () {
         Route::get('/records',[MedicalRecordController::class,'index']);

@@ -14,6 +14,7 @@ import Karton from './komponente/Karton/Karton';
 import KreirajAppointment from './komponente/Karton/KreirajAppointment';
 import DoctorPanel from './komponente/Doktori/DoktorPanel/DoctorPanel';
 import DrugsList from './komponente/fda/DrugsList';
+import Statistics from './komponente/Admin/Statistics';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -47,6 +48,10 @@ function App() {
           <Route path="/karton/kreirajAppointment" element={user ? <KreirajAppointment /> : <Home />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
+
+
+          <Route path="/statistics" element={<Statistics />} />
+
         </Routes>
       </div>
     </Router>

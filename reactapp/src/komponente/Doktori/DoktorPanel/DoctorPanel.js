@@ -115,7 +115,7 @@ const DoctorPanel = () => {
 
     return (
         <div className="doctor-panel">
-            <h1>Doctor's Schedule</h1>
+            <h1>  Schedule</h1>
             <div className="schedule">
                 <div className="day-schedule">
                     <h2>Today</h2>
